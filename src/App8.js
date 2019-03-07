@@ -53,6 +53,7 @@ class App extends Component {
   deleteRow(toBeDeleted) {
     const newTodo = this.state.todos.filter((todo) => todo.id !== toBeDeleted);
     console.log(newTodo);
+    console.log(toBeDeleted);
 
     this.setState({
       todos: newTodo,
@@ -72,7 +73,7 @@ class App extends Component {
       },
       {
         Header: "",
-        accessor: "stt",
+        accessor: "id",
         Cell: ({ value }) => (<button onClick={() => { this.deleteRow(value) }}>Delete</button>)
       }
     ];
