@@ -45,13 +45,15 @@ class App extends Component {
   };
 
   deleteItem = event => {
-    const newTodo = this.state.todos.filter((todo, index) => index !== parseInt(event.target.id));
+    const newTodo = this.state.todos.filter(
+      (todo, index) => index !== parseInt(event.target.id)
+    );
 
     this.setState({ todos: newTodo });
   };
 
   deleteRow(toBeDeleted) {
-    const newTodo = this.state.todos.filter((todo) => todo.id !== toBeDeleted);
+    const newTodo = this.state.todos.filter(todo => todo.id !== toBeDeleted);
     console.log(newTodo);
     console.log(toBeDeleted);
 
@@ -74,7 +76,15 @@ class App extends Component {
       {
         Header: "",
         accessor: "id",
-        Cell: ({ value }) => (<button onClick={() => { this.deleteRow(value) }}>Delete</button>)
+        Cell: ({ value }) => (
+          <button
+            onClick={() => {
+              this.deleteRow(value);
+            }}
+          >
+            Delete
+          </button>
+        )
       }
     ];
 
@@ -86,9 +96,17 @@ class App extends Component {
         <div id="input">
           <form onSubmit={this.addTodo}>
             <span>Date: </span>
-            <input type="text" onChange={this.dateChanged} value={this.state.date} />
+            <input
+              type="text"
+              onChange={this.dateChanged}
+              value={this.state.date}
+            />
             <span>Description: </span>
-            <input type="text" onChange={this.inputChanged} value={this.state.description} />
+            <input
+              type="text"
+              onChange={this.inputChanged}
+              value={this.state.description}
+            />
             <input type="submit" value="Add" />
           </form>
         </div>
